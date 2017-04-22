@@ -1,0 +1,15 @@
+- defaults:
+    link:
+          relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.emacs.d/: '.emacs.d/'
+    ~/.zshrc: .zshrc
+    ~/.config/terminator/config: '.config/terminator/config'
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  
