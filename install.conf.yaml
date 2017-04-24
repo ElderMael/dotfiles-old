@@ -6,10 +6,19 @@
 
 - link:
     ~/.dotfiles: ''
-    ~/.emacs.d/: '.emacs.d/'
-    ~/.zshrc: .zshrc
-    ~/.config/terminator/config: '.config/terminator/config'
+    ~/.emacs.d/init.el:
+      create: true
+      force: true
+      path: emacs.d/init.el
+    ~/.zshrc:
+      force: true
+      path: .zshrc
+    ~/.config/terminator/config:
+      create: true
+      force: true
+      path: config/terminator/config
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [cp -f themes/bullet-train.zsh-theme $ZSH_CUSTOM/themes/bullet-train.zsh-theme]
   
