@@ -20,5 +20,5 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [cp -f themes/bullet-train.zsh-theme $ZSH_CUSTOM/themes/bullet-train.zsh-theme]
+  - [cp -f themes/bullet-train.zsh-theme $ZSH_CUSTOM/themes/bullet-train.zsh-theme, Installing ZSH theme]
   
