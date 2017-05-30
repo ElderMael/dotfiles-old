@@ -11,7 +11,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_image = None
+    cursor_color = "#00ff00"
     font = Ubuntu Mono derivative Powerline 17
     foreground_color = "#00ff00"
     login_shell = True
