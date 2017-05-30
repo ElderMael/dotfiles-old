@@ -60,7 +60,7 @@ nvm install stable
 
 # SDK MAN and Java/Ceylon
 curl -s "https://get.sdkman.io" | bash
-source "/home/necromancer/.sdkman/bin/sdkman-init.sh"
+source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 sdk install java
 sdk install ceylon
