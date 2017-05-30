@@ -48,6 +48,15 @@ fi
 git config --global user.emal "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
 
+# Node Version Manager And Node
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm install stable
+
 echo "Linking dotfiles"
 cd ..
 bash ./install
