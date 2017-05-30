@@ -47,6 +47,7 @@ fi
 # Setting Up Git
 git config --global user.emal "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
+git config --global core.editor "emacs"
 
 # Node Version Manager And Node
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
