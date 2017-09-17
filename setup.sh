@@ -28,20 +28,20 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
     wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
-    
+
     if ! type "google-chrome-stable" > /dev/null; then
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google-chrome-stable_current_amd64.deb
-	sudo apt-get -y -f install
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      sudo dpkg -i google-chrome-stable_current_amd64.deb
+      sudo apt-get -y -f install
     fi
 
     if ! type "terminator" > /dev/null; then
-	sudo apt-get install -y terminator
+      sudo apt-get install -y terminator
     fi
 
     # Installing Other Software
     sudo apt-get install -y docker.io emacs25 terminator
-    
+
 fi
 
 # Setting Up Git
@@ -70,4 +70,3 @@ sdk install gradle
 echo "Linking dotfiles"
 cd ..
 bash ./install
-   
