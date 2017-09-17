@@ -42,6 +42,14 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Installing Other Software
     sudo apt-get install -y docker.io emacs25 terminator
 
+    # Add Other Software Repositories
+    sudo add-apt-repository -y ppa:webupd8team/atom
+    sudo apt-get -y install atom
+
+    apm install \
+      custom-invisibles atom-material-syntax atom-material-ui \
+      seti-icons
+
 fi
 
 # Setting Up Git
