@@ -1,4 +1,7 @@
 [global_config]
+  inactive_color_offset = 0.6
+  title_font = Ubuntu Mono derivative Powerline Bold 18
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -11,8 +14,12 @@
 [plugins]
 [profiles]
   [[default]]
+    audible_bell = True
+    copy_on_selection = True
     cursor_color = "#00ff00"
-    font = Ubuntu Mono derivative Powerline 17
+    font = Ubuntu Mono derivative Powerline 20
     foreground_color = "#00ff00"
     login_shell = True
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000ee:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
+    scrollback_infinite = True
     use_system_font = False
