@@ -40,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ceylon-mode neotree terraform-mode fill-column-indicator))))
+    (all-the-icons hcl-mode material-theme ceylon-mode neotree terraform-mode fill-column-indicator))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,4 +48,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-(load-theme 'green-phosphor t)
+(load-theme 'material t)
+(setq make-backup-files nil)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
