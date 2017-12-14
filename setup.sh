@@ -1,4 +1,6 @@
-set -x
+#!/bin/bash 
+
+set -ex
 
 echo "Setting up software"
 

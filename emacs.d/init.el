@@ -27,12 +27,6 @@
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
 
-					; Neo Tree Configs
-
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,7 +34,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (all-the-icons hcl-mode material-theme ceylon-mode neotree terraform-mode fill-column-indicator))))
+    (nyan-mode auto-package-update magit auto-complete markdown-mode company all-the-icons hcl-mode material-theme ceylon-mode neotree terraform-mode fill-column-indicator))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,6 +42,24 @@
  ;; If there is more than one, they won't work right.
  )
 
+(require 'all-the-icons)
 (load-theme 'material t)
 (setq make-backup-files nil)
+
+;; I _HATE_ Tabs
+(setq-default indent-tabs-mode nil)
+(setq default-tab-width 4)
+
+;; setup files ending in “.tf” to open in hcl-mode
+(add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
+
+;; No Backups, I use git
+(setq make-backup-files nil)
+
+(ac-config-default)
+(global-set-key [f12] 'magit-status)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+;; Neo Tree Theme
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))

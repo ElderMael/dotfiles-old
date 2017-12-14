@@ -49,3 +49,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # added by travis gem
 [ -f /home/necromancer/.travis/travis.sh ] && source /home/necromancer/.travis/travis.sh
+
+# Terraform & Packer Paths.                                         |                                                                           
+export PATH=~/terraform/:~/packer/:$PATH  
+
+autoload -U +X bashcompinit && bashcompinit
+complete -C /home/necromancer/terraform/terraform terraform
