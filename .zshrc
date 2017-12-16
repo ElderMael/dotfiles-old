@@ -14,7 +14,6 @@ BULLETTRAIN_PROMPT_ORDER=(
      custom
      context
      dir
-     java
      git
      cmd_exec_time
  )
