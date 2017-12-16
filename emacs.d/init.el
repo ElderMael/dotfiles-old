@@ -69,7 +69,7 @@
 
 
 ;; Font
-(set-default-font "Ubuntu Mono")
+(set-default-font "Ubuntu Mono derivative Powerline 20")
 
 ;; Nyan!!!!!!!!
 (define-globalized-minor-mode global-nyan-mode nyan-mode
@@ -82,4 +82,3 @@
 (global-nyan-mode 1)
 (global-whitespace-mode 1)
 
-(set-face-attribute 'default nil :height 200)
