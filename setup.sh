@@ -1,10 +1,10 @@
-#!/bin/bash 
+#!/bin/bash
 
 set -ex
 
 echo "Setting up software"
 
-mkdir temp-installs
+mkdir -p temp-installs
 cd temp-installs
 
 if  ! fc-list | grep -q "Powerline" ; then
@@ -23,35 +23,53 @@ fi
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     echo "Installing Linux Software"
-
-    echo "Installing ZSH for user $(echo $SUDO_USER)"
-    sudo apt-get install -y zsh curl
-    chsh -s $(which zsh) # Set As Default Shell
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
-    wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
-
-    if ! type "google-chrome-stable" > /dev/null; then
-      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      sudo dpkg -i google-chrome-stable_current_amd64.deb
-      sudo apt-get -y -f install
+    
+    if  ! type "zsh" >/dev/null; then
+	echo "Installing ZSH for user $(echo $SUDO_USER)"
+        sudo apt-get install -y zsh
+        chsh -s $(which zsh) # Set As Default Shell
     fi
 
-    if ! type "terminator" > /dev/null; then
+    if ! type "curl" >/dev/null ; then
+        sudo apt-get install -y curl
+    fi
+
+    if ! type "emacs" >/dev/null ; then
+        sudo apt-get install -y emacs
+    fi
+
+    if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
+	wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+    fi
+    
+
+    if ! type "terminator" >/dev/null ; then
       sudo apt-get install -y terminator
     fi
 
     # Installing Other Software
-    sudo apt-get install -y docker.io emacs25 terminator
+    if ! type "emacs" >/dev/null ; then
+	sudo apt-get install -y emacs
+    fi
 
-    # Add Other Software Repositories
-    sudo add-apt-repository -y ppa:webupd8team/atom
-    sudo apt-get -y install atom
+    if ! type "docker" >/dev/null ; then
+	sudo apt-get install -y docker.io
+    fi
 
-    apm install \
-      custom-invisibles atom-material-syntax atom-material-ui \
-      seti-icons
+    if ! type "atom" >/dev/null ; then
+	# Add Other Software Repositories
+	sudo add-apt-repository -y ppa:webupd8team/atom
+	sudo apt-get update
+	sudo apt-get -y install atom
 
+	apm install \
+	    custom-invisibles atom-material-syntax atom-material-ui \
+	    seti-icons
+
+    fi
+    
 fi
 
 # Setting Up Git
@@ -59,24 +77,30 @@ git config --global user.emal "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
 git config --global core.editor "emacs"
 
-# Node Version Manager And Node
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
+if type nvm >/dev/null; then
+    # Node Version Manager And Node
+    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-nvm install stable
+    nvm install stable
 
-# SDK MAN and Java/Ceylon
-curl -s "https://get.sdkman.io" | bash
-source "${HOME}/.sdkman/bin/sdkman-init.sh"
+fi
 
-sdk install java
-sdk install ceylon
-sdk install gradle
+if type sdk >/dev/null; then
+    # SDK MAN and Java/Ceylon
+    curl -s "https://get.sdkman.io" | bash
+    source "${HOME}/.sdkman/bin/sdkman-init.sh"
+    
+    sdk install java
+    sdk install ceylon
+    sdk install gradle
 
 
-echo "Linking dotfiles"
+    echo "Linking dotfiles"
+fi
+
 cd ..
 bash ./install

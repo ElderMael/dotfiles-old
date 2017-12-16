@@ -7,7 +7,26 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+
+					; list the packages you want
+(setq package-list
+      '( nyan-mode auto-package-update magit
+		   auto-complete markdown-mode company
+		   hcl-mode material-theme ceylon-mode
+		   neotree terraform-mode fill-column-indicator))
+
+
+; activate all the packages
 (package-initialize)
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; reduce the frequency of garbage collection by making it happen on
 ;; each 50MB of allocated data (the default is on every 0.76MB)
@@ -27,22 +46,7 @@
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (nyan-mode auto-package-update magit auto-complete markdown-mode company all-the-icons hcl-mode material-theme ceylon-mode neotree terraform-mode fill-column-indicator))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
-(require 'all-the-icons)
 (load-theme 'material t)
 (setq make-backup-files nil)
 
