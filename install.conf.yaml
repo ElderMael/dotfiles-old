@@ -12,15 +12,11 @@
       path: emacs.d/init.el
     ~/.zshrc:
       force: true
-      path: .zshrc
+      path: zshrc
     ~/.config/terminator/config:
       create: true
       force: true
       path: config/terminator/config
-    ~/.atom/styles.less:
-      create: true
-      force: true
-      path: atom/styles.less
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
