@@ -61,6 +61,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
       sudo apt-get -y -f install
     fi
 
+    if ! type "http" >/dev/null; then
+        sudo apt-get install -y httpie
+    fi
+
+    if ! type "openpyn" >/dev/null; then
+        sudo apt-get install -y python3-pip
+        sudo pip3 install openpyn --upgrade
+    fi
+
 fi
 
 # Setting Up Git
