@@ -66,8 +66,11 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     if ! type "openpyn" >/dev/null; then
+        # This gets stuck in ubuntu artful...
+        # See https://bugs.launchpad.net/ubuntu/+source/openvpn/+bug/1725525
+        sudo apt-get install -y openvpn python-gobject unzip wget
         sudo apt-get install -y python3-pip
-        sudo pip3 install openpyn --upgrade
+        sudo pip3 install openpyn
     fi
 
 fi
