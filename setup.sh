@@ -23,6 +23,8 @@ fi
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     echo "Installing Linux Software"
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
 
     if  ! type "zsh" >/dev/null; then
 	echo "Installing ZSH for user $(echo $SUDO_USER)"
