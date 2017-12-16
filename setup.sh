@@ -61,7 +61,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 # Setting Up Git
-git config --global user.emal "sftwr.mael@gmail.com"
+git config --global user.email "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
 git config --global core.editor "emacs"
 

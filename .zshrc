@@ -25,7 +25,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias emacs='emacs --no-window'
 alias zshconfig="emacs ~/.zshrc"
 alias ohmyzsh="emacs ~/.oh-my-zsh"
 alias ll="ls -lah"
