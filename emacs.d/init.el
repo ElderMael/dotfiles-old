@@ -8,7 +8,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 
-					; list the packages you want
+; list the packages you want
 (setq package-list
       '( nyan-mode auto-package-update magit
            auto-complete markdown-mode company
@@ -19,7 +19,7 @@
 ; activate all the packages
 (package-initialize)
 
-; fetch the list of packages available 
+; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -33,11 +33,11 @@
 (setq gc-cons-treshold 50000000)
 
 
-					; Global Line Numbers
+; Global Line Numbers
 (global-linum-mode 1)
-					; Global Column Numbers
+; Global Column Numbers
 (setq column-number-mode t)
-					; Vertical Rule
+; Vertical Rule
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "darkblue")
@@ -81,4 +81,3 @@
 
 (global-nyan-mode 1)
 (global-whitespace-mode 1)
-
