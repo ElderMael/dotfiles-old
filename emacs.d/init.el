@@ -75,3 +75,5 @@
   (lambda () (nyan-mode 1)))
 
 (global-nyan-mode 1)
+
+(set-face-attribute 'default nil :height 200)
