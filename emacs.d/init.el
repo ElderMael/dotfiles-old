@@ -65,5 +65,13 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-;; Neo Tree Theme
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+
+;; Font
+(set-default-font "Ubuntu Mono")
+
+;; Nyan!!!!!!!!
+(define-globalized-minor-mode global-nyan-mode nyan-mode
+  (lambda () (nyan-mode 1)))
+
+(global-nyan-mode 1)
