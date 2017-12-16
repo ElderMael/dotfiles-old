@@ -2,7 +2,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -11,9 +11,9 @@
 					; list the packages you want
 (setq package-list
       '( nyan-mode auto-package-update magit
-		   auto-complete markdown-mode company
-		   hcl-mode material-theme ceylon-mode
-		   neotree terraform-mode fill-column-indicator))
+           auto-complete markdown-mode company
+           hcl-mode material-theme ceylon-mode
+           neotree terraform-mode fill-column-indicator))
 
 
 ; activate all the packages
@@ -75,6 +75,11 @@
 (define-globalized-minor-mode global-nyan-mode nyan-mode
   (lambda () (nyan-mode 1)))
 
+(define-globalized-minor-mode global-whitespace-mode whitespace-mode
+  (lambda () (whitespace-mode 1)))
+
+
 (global-nyan-mode 1)
+(global-whitespace-mode 1)
 
 (set-face-attribute 'default nil :height 200)
