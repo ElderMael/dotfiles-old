@@ -53,6 +53,7 @@
 ;; I _HATE_ Tabs
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; setup files ending in “.tf” to open in hcl-mode
 (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))

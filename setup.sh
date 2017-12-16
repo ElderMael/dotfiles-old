@@ -39,9 +39,9 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
-	wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+	    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	    mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
+	    wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
     fi
     
 
@@ -51,23 +51,11 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     # Installing Other Software
     if ! type "emacs" >/dev/null ; then
-	sudo apt-get install -y emacs
+	    sudo apt-get install -y emacs
     fi
 
     if ! type "docker" >/dev/null ; then
-	sudo apt-get install -y docker.io
-    fi
-
-    if ! type "atom" >/dev/null ; then
-	# Add Other Software Repositories
-	sudo add-apt-repository -y ppa:webupd8team/atom
-	sudo apt-get update
-	sudo apt-get -y install atom
-
-	apm install \
-	    custom-invisibles atom-material-syntax atom-material-ui \
-	    seti-icons
-
+	    sudo apt-get install -y docker.io
     fi
     
 fi
@@ -78,6 +66,7 @@ git config --global user.name "ElderMael"
 git config --global core.editor "emacs"
 
 if type nvm >/dev/null; then
+    
     # Node Version Manager And Node
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
 
