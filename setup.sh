@@ -2,6 +2,9 @@
 
 set -ex
 
+toolbox_binary_path="${HOME}/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox"
+toolbox_url="https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz"
+
 echo "Setting up software"
 
 mkdir -p temp-installs
@@ -83,6 +86,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     if ! type "screenfetch" >/dev/null; then
         sudo apt-get install -y screenfetch
+    fi
+
+    if [ ! -f "${toobox_binary_path}"  ]; then
+        http "${toolbox_url}" > toolbox.tar.gz
+
+        tar xvzf toolbox.tar.gz --strip=1 # Extract Binary Only
+        chmod u+x jetbrains-toolbox
+
+        ./jetbrains-toolbox
     fi
 
 fi
