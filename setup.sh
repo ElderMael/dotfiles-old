@@ -4,6 +4,7 @@ set -ex
 
 toolbox_binary_path="${HOME}/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox"
 toolbox_url="https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz"
+slack_binary_url="https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.deb"
 
 echo "Setting up software"
 
@@ -28,6 +29,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "Installing Linux Software"
     sudo apt-get -y update
     sudo apt-get -y upgrade
+
+    if ! type "http" >/dev/null; then
+        sudo apt-get install -y httpie
+    fi
 
     if  ! type "zsh" >/dev/null; then
 	echo "Installing ZSH for user $(echo $SUDO_USER)"
@@ -62,10 +67,6 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
       wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       sudo dpkg -i google-chrome-stable_current_amd64.deb
       sudo apt-get -y -f install
-    fi
-
-    if ! type "http" >/dev/null; then
-        sudo apt-get install -y httpie
     fi
 
     if ! type "openpyn" >/dev/null; then
@@ -103,6 +104,13 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     if ! dpkg -l | grep vlc >/dev/null; then
         sudo apt-get install -y git-extras
+    fi
+
+    if ! type "slack" >/dev/null; then
+        http "${slack_binary_url}" > slack.deb
+
+        sudo dpkg -i slack.deb
+        sudo apt-get -y -f install
     fi
 
 fi
