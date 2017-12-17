@@ -3,3 +3,4 @@ emacs.d/auto-save-list
 *~
 .DS_Store
 temp-installs
+.idea/
