@@ -101,6 +101,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get -y install tree
     fi
 
+    if ! dpkg -l | grep vlc >/dev/null; then
+        sudo apt-get install -y git-extras
+    fi
+
 fi
 
 # Setting Up Git

@@ -19,7 +19,15 @@ BULLETTRAIN_PROMPT_ORDER=(
  )
 
 # Plugins
-plugins=(git)
+plugins=(
+    git
+    nyan
+    command-not-found
+    git-extras
+    gradle
+    httpie
+    rand-quote
+ )
 
 # Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -28,6 +36,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="emacs ~/.zshrc"
 alias ohmyzsh="emacs ~/.oh-my-zsh"
 alias ll="ls -lah"
+alias nordvpn="systemctl start openpyn"
 
 #Editor
 EDITOR=emacs

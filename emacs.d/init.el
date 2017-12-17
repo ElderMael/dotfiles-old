@@ -87,6 +87,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
     (yaml-mode terraform-mode nyan-mode neotree material-theme markdown-mode magit fill-column-indicator company ceylon-mode auto-package-update auto-complete))))
