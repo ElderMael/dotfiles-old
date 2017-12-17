@@ -44,12 +44,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# added by travis gem
-[ -f /home/necromancer/.travis/travis.sh ] && source /home/necromancer/.travis/travis.sh
-
-# Terraform & Packer Paths.                                         |                                                                           
-export PATH=~/terraform/:~/packer/:$PATH  
-
-autoload -U +X bashcompinit && bashcompinit
-complete -C /home/necromancer/terraform/terraform terraform
