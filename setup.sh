@@ -88,13 +88,17 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get install -y screenfetch
     fi
 
-    if [ ! -f "${toobox_binary_path}"  ]; then
+    if [ ! -f "${toolbox_binary_path}"  ]; then
         http "${toolbox_url}" > toolbox.tar.gz
 
         tar xvzf toolbox.tar.gz --strip=1 # Extract Binary Only
         chmod u+x jetbrains-toolbox
 
         ./jetbrains-toolbox
+    fi
+
+    if ! type "tree" >/dev/null; then
+        sudo apt-get -y install tree
     fi
 
 fi
@@ -104,7 +108,7 @@ git config --global user.email "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
 git config --global core.editor "emacs"
 
-if type nvm >/dev/null; then
+if [ ! -d "${HOME}/.nvm/" ]; then
 
     # Node Version Manager And Node
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | zsh
@@ -117,7 +121,7 @@ if type nvm >/dev/null; then
 
 fi
 
-if type sdk >/dev/null; then
+if [ ! -d "${HOME}/.sdkman" ]; then
     # SDK MAN and Java/Ceylon
     curl -s "https://get.sdkman.io" | bash
     source "${HOME}/.sdkman/bin/sdkman-init.sh"
@@ -125,7 +129,6 @@ if type sdk >/dev/null; then
     sdk install java
     sdk install ceylon
     sdk install gradle
-
 
     echo "Linking dotfiles"
 fi

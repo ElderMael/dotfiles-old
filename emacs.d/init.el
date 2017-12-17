@@ -13,7 +13,8 @@
       '( nyan-mode auto-package-update magit
            auto-complete markdown-mode company
            hcl-mode material-theme ceylon-mode
-           neotree terraform-mode fill-column-indicator))
+           neotree terraform-mode fill-column-indicator
+           yaml-mode))
 
 
 ; activate all the packages
@@ -81,3 +82,17 @@
 
 (global-nyan-mode 1)
 (global-whitespace-mode 1)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yaml-mode terraform-mode nyan-mode neotree material-theme markdown-mode magit fill-column-indicator company ceylon-mode auto-package-update auto-complete))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

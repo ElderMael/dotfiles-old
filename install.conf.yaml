@@ -17,6 +17,14 @@
       create: true
       force: true
       path: config/terminator/config
+    ~/.config/obs-studio/basic/profiles/Code/basic.ini:
+      create: true
+      force: true
+      path: obs-studio/Code/basic.ini
+    ~/.config/obs-studio/basic/scenes/Untitled.json:
+      create: true
+      force: true
+      path: obs-studio/scenes/Untitled.json
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
