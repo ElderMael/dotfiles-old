@@ -15,11 +15,13 @@
 [profiles]
   [[default]]
     audible_bell = True
+    background_color = "#232322"
     copy_on_selection = True
-    cursor_color = "#00ff00"
+    cursor_color = "#8ae234"
+    cursor_color_fg = False
     font = Ubuntu Mono derivative Powerline 20
     foreground_color = "#00ff00"
     login_shell = True
-    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000ee:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
+    palette = "#212121:#b7141f:#457b24:#f6981e:#134eb2:#560088:#0e717c:#efefef:#424242:#e83b3f:#7aba3a:#ffea2e:#54a4f3:#aa4dbc:#26bbd1:#d9d9d9"
     scrollback_infinite = True
     use_system_font = False
