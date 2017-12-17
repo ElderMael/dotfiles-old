@@ -73,6 +73,18 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo pip3 install openpyn
     fi
 
+    if ! type "obs" >/dev/null; then
+        sudo apt-get install -y obs-studio
+    fi
+
+    if ! type "dconf-editor" >/dev/null; then
+        sudo apt-get install -y dconf-editor
+    fi
+
+    if ! type "screenfetch" >/dev/null; then
+        sudo apt-get install -y screenfetch
+    fi
+
 fi
 
 # Setting Up Git
