@@ -37,6 +37,8 @@ alias zshconfig="emacs ~/.zshrc"
 alias ohmyzsh="emacs ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias nordvpn="systemctl start openpyn"
+alias docker-obliterate-containers="docker ps -a -q | xargs docker stop \
+      && docker ps -a -q | xargs docker rm "
 
 #Editor
 EDITOR=emacs
