@@ -22,6 +22,16 @@ fi
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "Installing Mac Software"
+
+    if ! type "emacs" >/dev/null; then
+        brew cask install emacs
+    fi
+
+    if ! type "zsh" >/dev/null; then
+        brew install zsh
+        chsh -s $(which zsh)
+    fi
+
 fi
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -35,7 +45,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     if  ! type "zsh" >/dev/null; then
-	echo "Installing ZSH for user $(echo $SUDO_USER)"
+        echo "Installing ZSH for user $(echo $SUDO_USER)"
         sudo apt-get install -y zsh
         chsh -s $(which zsh) # Set As Default Shell
     fi
