@@ -4,7 +4,12 @@ set -ex
 
 toolbox_binary_path="${HOME}/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox"
 toolbox_url="https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz"
+vagrant_deb_url="https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb"
 slack_binary_url="https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.deb"
+oh_my_zsh_url="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+chrome_deb_url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > chrome.deb"
+bullettrain_theme_url="http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme"
+packer_zip_url="https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip"
 
 echo "Setting up software"
 
@@ -59,9 +64,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        sh -c "$(curl -fsSL "${oh_my_zsh_url}")"
         mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
-        wget -O ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+        http "${bullettrain_theme_url}" \
+             > "${HOME}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
     fi
 
     if ! type "terminator" >/dev/null ; then
@@ -74,8 +80,10 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     if ! type "google-chrome" >/dev/null; then
-      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      sudo dpkg -i google-chrome-stable_current_amd64.deb
+      http "${chrome_deb_url}"
+      set +e  
+      sudo dpkg -i chrome.deb
+      set -e
       sudo apt-get -y -f install
     fi
 
@@ -121,6 +129,26 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
         sudo dpkg -i slack.deb
         sudo apt-get -y -f install
+    fi
+
+    if ! type "VirtualBox" >/dev/null; then
+        sudo apt-get -y install virtualbox
+    fi
+
+    if ! type "vagrant" >/dev/null; then
+        http "${vagrant_deb_url}" > vagrant.deb
+
+        sudo dpkg -i vagrant.deb
+        sudo apt-get -y -f install
+    fi
+
+    if ! type "packer" >/dev/null; then
+        http "${packer_zip_url}" > packer.zip
+
+        unzip packer.zip
+
+        sudo cp -f packer /usr/bin/packer
+        sudo chmod 555 /usr/bin/packer
     fi
 
 fi
