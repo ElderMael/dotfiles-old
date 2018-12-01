@@ -90,7 +90,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (yaml-mode terraform-mode nyan-mode neotree material-theme markdown-mode magit fill-column-indicator company ceylon-mode auto-package-update auto-complete))))
+    (typescript-mode yaml-mode terraform-mode nyan-mode neotree material-theme markdown-mode magit fill-column-indicator company ceylon-mode auto-package-update auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

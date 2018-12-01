@@ -39,6 +39,7 @@ alias ll="ls -lah"
 alias nordvpn="systemctl start openpyn"
 alias docker-obliterate-containers="docker ps -a -q | xargs docker stop \
       && docker ps -a -q | xargs docker rm "
+alias glw='./gradlew'
 
 #Editor
 EDITOR=emacs
@@ -51,3 +52,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # SDK MAN
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+source /home/necromancer/.rvm/scripts/rvm
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
+export ATOMIST_ROOT=/home/necromancer/Repos

@@ -65,10 +65,12 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL "${oh_my_zsh_url}")"
-        mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
-        http "${bullettrain_theme_url}" \
-             > "${HOME}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
     fi
+
+    
+    mkdir -p "${HOME}/.oh-my-zsh/themes"
+    http "${bullettrain_theme_url}" \
+         > "${HOME}/.oh-my-zsh/themes/bullet-train.zsh-theme"
 
     if ! type "terminator" >/dev/null ; then
       sudo apt-get install -y terminator
@@ -107,15 +109,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get install -y screenfetch
     fi
 
-    if [ ! -f "${toolbox_binary_path}"  ]; then
-        http "${toolbox_url}" > toolbox.tar.gz
-
-        tar xvzf toolbox.tar.gz --strip=1 # Extract Binary Only
-        chmod u+x jetbrains-toolbox
-
-        ./jetbrains-toolbox
-    fi
-
+   
     if ! type "tree" >/dev/null; then
         sudo apt-get -y install tree
     fi
@@ -124,13 +118,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get install -y git-extras
     fi
 
-    if ! type "slack" >/dev/null; then
-        http "${slack_binary_url}" > slack.deb
-
-        sudo dpkg -i slack.deb
-        sudo apt-get -y -f install
-    fi
-
+   
     if ! type "VirtualBox" >/dev/null; then
         sudo apt-get -y install virtualbox
     fi
