@@ -68,9 +68,9 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 
     
-    mkdir -p "${HOME}/.oh-my-zsh/themes"
-    http "${bullettrain_theme_url}" \
-         > "${HOME}/.oh-my-zsh/themes/bullet-train.zsh-theme"
+    mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
+    http --follow "${bullettrain_theme_url}" \
+         > "${HOME}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
 
     if ! type "terminator" >/dev/null ; then
       sudo apt-get install -y terminator
