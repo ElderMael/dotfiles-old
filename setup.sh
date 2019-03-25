@@ -2,12 +2,7 @@
 
 set -ex
 
-toolbox_binary_path="${HOME}/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox"
-toolbox_url="https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz"
-vagrant_deb_url="https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb"
-slack_binary_url="https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.deb"
 oh_my_zsh_url="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
-chrome_deb_url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > chrome.deb"
 bullettrain_theme_url="http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme"
 packer_zip_url="https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip"
 
@@ -28,9 +23,9 @@ fi
 if [ "$(uname)" == "Darwin" ]; then
     echo "Installing Mac Software"
 
-    if ! type "emacs" >/dev/null; then
-        brew cask install emacs
-    fi
+    #if ! type "emacs" >/dev/null; then
+    #    brew cask install emacs
+    #fi
 
     if ! type "zsh" >/dev/null; then
         brew install zsh
@@ -59,15 +54,14 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get install -y curl
     fi
 
-    if ! type "emacs" >/dev/null ; then
-        sudo apt-get install -y emacs
-    fi
+    #if ! type "emacs" >/dev/null ; then
+    #    sudo apt-get install -y emacs
+    #fi
 
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL "${oh_my_zsh_url}")"
     fi
 
-    
     mkdir -p "${HOME}/.oh-my-zsh/custom/themes"
     http --follow "${bullettrain_theme_url}" \
          > "${HOME}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
@@ -79,14 +73,6 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Installing Other Software
     if ! type "emacs" >/dev/null ; then
         sudo apt-get install -y emacs
-    fi
-
-    if ! type "google-chrome" >/dev/null; then
-      http "${chrome_deb_url}"
-      set +e  
-      sudo dpkg -i chrome.deb
-      set -e
-      sudo apt-get -y -f install
     fi
 
     if ! type "openpyn" >/dev/null; then
@@ -109,34 +95,12 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         sudo apt-get install -y screenfetch
     fi
 
-   
     if ! type "tree" >/dev/null; then
         sudo apt-get -y install tree
     fi
 
     if ! dpkg -l | grep vlc >/dev/null; then
         sudo apt-get install -y git-extras
-    fi
-
-   
-    if ! type "VirtualBox" >/dev/null; then
-        sudo apt-get -y install virtualbox
-    fi
-
-    if ! type "vagrant" >/dev/null; then
-        http "${vagrant_deb_url}" > vagrant.deb
-
-        sudo dpkg -i vagrant.deb
-        sudo apt-get -y -f install
-    fi
-
-    if ! type "packer" >/dev/null; then
-        http "${packer_zip_url}" > packer.zip
-
-        unzip packer.zip
-
-        sudo cp -f packer /usr/bin/packer
-        sudo chmod 555 /usr/bin/packer
     fi
 
 fi
@@ -165,7 +129,6 @@ if [ ! -d "${HOME}/.sdkman" ]; then
     source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
     sdk install java
-    sdk install ceylon
     sdk install gradle
 
     echo "Linking dotfiles"

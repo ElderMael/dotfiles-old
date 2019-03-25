@@ -40,6 +40,9 @@ alias nordvpn="systemctl start openpyn"
 alias docker-obliterate-containers="docker ps -a -q | xargs docker stop \
       && docker ps -a -q | xargs docker rm "
 alias glw='./gradlew'
+alias purge-package='sudo dpkg --remove --forceall'
+
+
 
 #Editor
 EDITOR=emacs
