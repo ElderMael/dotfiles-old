@@ -47,3 +47,7 @@ EDITOR=emacs
 
 
 export ATOMIST_ROOT=/home/necromancer/Repos
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/necromancer/.sdkman"
+[[ -s "/home/necromancer/.sdkman/bin/sdkman-init.sh" ]] && source "/home/necromancer/.sdkman/bin/sdkman-init.sh"
