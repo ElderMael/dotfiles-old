@@ -19,4 +19,8 @@ git config --global user.email "sftwr.mael@gmail.com"
 git config --global user.name "ElderMael"
 git config --global core.editor "emacs"
 
+set +x # Next command is very verbose!
+curl -s "https://get.sdkman.io" | zsh
+set -x
+
 /usr/bin/env zsh ./install
