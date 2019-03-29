@@ -70,7 +70,7 @@
 
 
 ;; Font
-(set-default-font "Ubuntu Mono derivative Powerline 20")
+(set-default-font "Hack Bold 20")
 
 ;; Nyan!!!!!!!!
 (define-globalized-minor-mode global-nyan-mode nyan-mode
